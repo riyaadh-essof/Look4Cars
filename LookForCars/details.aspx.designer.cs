@@ -22,6 +22,15 @@ namespace LookForCars {
         protected global::System.Web.UI.WebControls.HiddenField txtPriceHidden;
         
         /// <summary>
+        /// txtInitital control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField txtInitital;
+        
+        /// <summary>
         /// txtTitle2 control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,42 @@ namespace LookForCars {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtTitle2;
+        
+        /// <summary>
+        /// txtPrice2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtPrice2;
+        
+        /// <summary>
+        /// sliderdeposit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText sliderdeposit;
+        
+        /// <summary>
+        /// demo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl demo;
+        
+        /// <summary>
+        /// btnFinance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnFinance;
         
         /// <summary>
         /// divImages control.
@@ -67,15 +112,6 @@ namespace LookForCars {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtTitle;
         
         /// <summary>
-        /// txtPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtPrice;
-        
-        /// <summary>
         /// txtInstallment control.
         /// </summary>
         /// <remarks>
@@ -83,6 +119,15 @@ namespace LookForCars {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtInstallment;
+        
+        /// <summary>
+        /// txtPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtPrice;
         
         /// <summary>
         /// txtYear control.
@@ -148,39 +193,12 @@ namespace LookForCars {
         protected global::System.Web.UI.HtmlControls.HtmlTableCell txtDrivetrain;
         
         /// <summary>
-        /// txtPrice2 control.
+        /// Finance2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtPrice2;
-        
-        /// <summary>
-        /// sliderdeposit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText sliderdeposit;
-        
-        /// <summary>
-        /// demo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl demo;
-        
-        /// <summary>
-        /// btnFinance control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnFinance;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Finance2;
     }
 }

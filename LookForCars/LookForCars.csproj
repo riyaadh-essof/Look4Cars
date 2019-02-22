@@ -216,6 +216,17 @@
     <Content Include="dist\js\common.js" />
     <Content Include="dist\js\dropzone.js" />
     <Content Include="dist\js\gmaps.min.js" />
+    <Content Include="dist\js\masterslider\masterslider.min.js" />
+    <Content Include="dist\js\masterslider\skins\default\light-skin-1-retina.png" />
+    <Content Include="dist\js\masterslider\skins\default\light-skin-1.png" />
+    <Content Include="dist\js\masterslider\skins\default\style.css" />
+    <Content Include="dist\js\masterslider\style\blank.gif" />
+    <Content Include="dist\js\masterslider\style\grab.png" />
+    <Content Include="dist\js\masterslider\style\grabbing.png" />
+    <Content Include="dist\js\masterslider\style\loading-2.gif" />
+    <Content Include="dist\js\masterslider\style\masterslider.css" />
+    <Content Include="dist\js\masterslider\style\style.css" />
+    <Content Include="dist\js\masterslider\style\video-close-btn.png" />
     <Content Include="dist\js\plugins.min.js" />
     <Content Include="MyFinance\assets\bundles\c3.bundle.js" />
     <Content Include="MyFinance\assets\bundles\countTo.bundle.js" />
@@ -407,7 +418,9 @@
     <Content Include="MyFinance\assets\plugins\sweetalert\sweetalert.min.js" />
     <Content Include="MyFinance\createpolicy.aspx" />
     <Content Include="MyFinance\dashboard.aspx" />
+    <Content Include="MyFinance\error.aspx" />
     <Content Include="MyFinance\login.aspx" />
+    <Content Include="MyFinance\policy.aspx" />
     <Content Include="register.aspx" />
     <Content Include="WebForm1.aspx" />
     <Content Include="wizard\assets\validate.js" />
@@ -591,12 +604,26 @@
     <Compile Include="MyFinance\dashboard.Master.designer.cs">
       <DependentUpon>dashboard.Master</DependentUpon>
     </Compile>
+    <Compile Include="MyFinance\error.aspx.cs">
+      <DependentUpon>error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyFinance\error.aspx.designer.cs">
+      <DependentUpon>error.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MyFinance\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MyFinance\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyFinance\policy.aspx.cs">
+      <DependentUpon>policy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyFinance\policy.aspx.designer.cs">
+      <DependentUpon>policy.aspx</DependentUpon>
     </Compile>
     <Compile Include="Objects\Accessories.cs" />
     <Compile Include="Objects\BankAccount.cs" />
@@ -661,6 +688,21 @@
     <Content Include="MyFinance\assets\plugins\summernote\dist\font\summernotef534.ttf" />
     <Content Include="MyFinance\assets\plugins\summernote\dist\font\summernotef534.woff" />
     <Content Include="MyFinance\dashboard.Master" />
+    <Content Include="dist\fonts\kia_bold-webfont-webfont.woff" />
+    <Content Include="dist\fonts\kia_bold-webfont-webfont.woff2" />
+    <Content Include="dist\fonts\kia_bold-webfont.ttf" />
+    <Content Include="dist\fonts\kia_bold-webfont.woff" />
+    <Content Include="dist\fonts\kia_bold-webfont.woff2" />
+    <Content Include="dist\fonts\kia_light-webfont-webfont.woff" />
+    <Content Include="dist\fonts\kia_light-webfont-webfont.woff2" />
+    <Content Include="dist\fonts\kia_light-webfont.ttf" />
+    <Content Include="dist\fonts\kia_light-webfont.woff" />
+    <Content Include="dist\fonts\kia_light-webfont.woff2" />
+    <Content Include="dist\fonts\kia_medium-webfont-webfont.woff" />
+    <Content Include="dist\fonts\kia_medium-webfont-webfont.woff2" />
+    <Content Include="dist\fonts\kia_medium-webfont.ttf" />
+    <Content Include="dist\fonts\kia_medium-webfont.woff" />
+    <Content Include="dist\fonts\kia_medium-webfont.woff2" />
     <None Include="packages.config" />
     <Content Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <None Include="Web.Debug.config">

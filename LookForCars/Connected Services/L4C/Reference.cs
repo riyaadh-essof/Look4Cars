@@ -35,16 +35,34 @@ namespace LookForCars.L4C {
         System.Threading.Tasks.Task<int> CreateUserAddressAsync(int User_ID, string Line1, string Line2, string Suburb, string City, string Province, int PostalCode, string Type);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILookForCarsService/CreateUser", ReplyAction="http://tempuri.org/ILookForCarsService/CreateUserResponse")]
-        int CreateUser(int FirstName, string LastName, string IDType, string IDNumber, string Email, string Cell, int Tel, string password);
+        int CreateUser(string FirstName, string LastName, string IDType, string IDNumber, string Email, string Cell, string Tel, string Password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILookForCarsService/CreateUser", ReplyAction="http://tempuri.org/ILookForCarsService/CreateUserResponse")]
-        System.Threading.Tasks.Task<int> CreateUserAsync(int FirstName, string LastName, string IDType, string IDNumber, string Email, string Cell, int Tel, string password);
+        System.Threading.Tasks.Task<int> CreateUserAsync(string FirstName, string LastName, string IDType, string IDNumber, string Email, string Cell, string Tel, string Password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILookForCarsService/CreatePolicy", ReplyAction="http://tempuri.org/ILookForCarsService/CreatePolicyResponse")]
-        int CreatePolicy(int UserID, string PolicyNumber, string Item_ID, string Make, string Model, string Derivative, int Year, string Image, string Status);
+        int CreatePolicy(int UserID, string PolicyNumber, string Status);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILookForCarsService/CreatePolicy", ReplyAction="http://tempuri.org/ILookForCarsService/CreatePolicyResponse")]
-        System.Threading.Tasks.Task<int> CreatePolicyAsync(int UserID, string PolicyNumber, string Item_ID, string Make, string Model, string Derivative, int Year, string Image, string Status);
+        System.Threading.Tasks.Task<int> CreatePolicyAsync(int UserID, string PolicyNumber, string Status);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILookForCarsService/UpdatePolicy", ReplyAction="http://tempuri.org/ILookForCarsService/UpdatePolicyResponse")]
+        void UpdatePolicy(int id, string PolicyNumber, string Status);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILookForCarsService/UpdatePolicy", ReplyAction="http://tempuri.org/ILookForCarsService/UpdatePolicyResponse")]
+        System.Threading.Tasks.Task UpdatePolicyAsync(int id, string PolicyNumber, string Status);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILookForCarsService/CreateVehicle", ReplyAction="http://tempuri.org/ILookForCarsService/CreateVehicleResponse")]
+        int CreateVehicle(int UserID, string PolicyNumber, string Item_ID, string Make, string Model, string Derivative, int Year, string Image, string Status);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILookForCarsService/CreateVehicle", ReplyAction="http://tempuri.org/ILookForCarsService/CreateVehicleResponse")]
+        System.Threading.Tasks.Task<int> CreateVehicleAsync(int UserID, string PolicyNumber, string Item_ID, string Make, string Model, string Derivative, int Year, string Image, string Status);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILookForCarsService/GetVehicleDetails", ReplyAction="http://tempuri.org/ILookForCarsService/GetVehicleDetailsResponse")]
+        System.Data.DataTable GetVehicleDetails(string PolicyNumber);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILookForCarsService/GetVehicleDetails", ReplyAction="http://tempuri.org/ILookForCarsService/GetVehicleDetailsResponse")]
+        System.Threading.Tasks.Task<System.Data.DataTable> GetVehicleDetailsAsync(string PolicyNumber);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILookForCarsService/GetUserPolicies", ReplyAction="http://tempuri.org/ILookForCarsService/GetUserPoliciesResponse")]
         System.Data.DataTable GetUserPolicies(int UserID);
@@ -76,14 +94,22 @@ namespace LookForCars.L4C {
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
         public string propic;
         
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=4)]
+        public string firstname;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=5)]
+        public string lastname;
+        
         public UserAuthRequest() {
         }
         
-        public UserAuthRequest(string username, string password, int id, string propic) {
+        public UserAuthRequest(string username, string password, int id, string propic, string firstname, string lastname) {
             this.username = username;
             this.password = password;
             this.id = id;
             this.propic = propic;
+            this.firstname = firstname;
+            this.lastname = lastname;
         }
     }
     
@@ -101,13 +127,21 @@ namespace LookForCars.L4C {
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
         public string propic;
         
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
+        public string firstname;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=4)]
+        public string lastname;
+        
         public UserAuthResponse() {
         }
         
-        public UserAuthResponse(bool UserAuthResult, int id, string propic) {
+        public UserAuthResponse(bool UserAuthResult, int id, string propic, string firstname, string lastname) {
             this.UserAuthResult = UserAuthResult;
             this.id = id;
             this.propic = propic;
+            this.firstname = firstname;
+            this.lastname = lastname;
         }
     }
     
@@ -151,15 +185,19 @@ namespace LookForCars.L4C {
             return base.Channel.UserAuth(request);
         }
         
-        public bool UserAuth(string username, string password, ref int id, ref string propic) {
+        public bool UserAuth(string username, string password, ref int id, ref string propic, ref string firstname, ref string lastname) {
             LookForCars.L4C.UserAuthRequest inValue = new LookForCars.L4C.UserAuthRequest();
             inValue.username = username;
             inValue.password = password;
             inValue.id = id;
             inValue.propic = propic;
+            inValue.firstname = firstname;
+            inValue.lastname = lastname;
             LookForCars.L4C.UserAuthResponse retVal = ((LookForCars.L4C.ILookForCarsService)(this)).UserAuth(inValue);
             id = retVal.id;
             propic = retVal.propic;
+            firstname = retVal.firstname;
+            lastname = retVal.lastname;
             return retVal.UserAuthResult;
         }
         
@@ -175,20 +213,44 @@ namespace LookForCars.L4C {
             return base.Channel.CreateUserAddressAsync(User_ID, Line1, Line2, Suburb, City, Province, PostalCode, Type);
         }
         
-        public int CreateUser(int FirstName, string LastName, string IDType, string IDNumber, string Email, string Cell, int Tel, string password) {
-            return base.Channel.CreateUser(FirstName, LastName, IDType, IDNumber, Email, Cell, Tel, password);
+        public int CreateUser(string FirstName, string LastName, string IDType, string IDNumber, string Email, string Cell, string Tel, string Password) {
+            return base.Channel.CreateUser(FirstName, LastName, IDType, IDNumber, Email, Cell, Tel, Password);
         }
         
-        public System.Threading.Tasks.Task<int> CreateUserAsync(int FirstName, string LastName, string IDType, string IDNumber, string Email, string Cell, int Tel, string password) {
-            return base.Channel.CreateUserAsync(FirstName, LastName, IDType, IDNumber, Email, Cell, Tel, password);
+        public System.Threading.Tasks.Task<int> CreateUserAsync(string FirstName, string LastName, string IDType, string IDNumber, string Email, string Cell, string Tel, string Password) {
+            return base.Channel.CreateUserAsync(FirstName, LastName, IDType, IDNumber, Email, Cell, Tel, Password);
         }
         
-        public int CreatePolicy(int UserID, string PolicyNumber, string Item_ID, string Make, string Model, string Derivative, int Year, string Image, string Status) {
-            return base.Channel.CreatePolicy(UserID, PolicyNumber, Item_ID, Make, Model, Derivative, Year, Image, Status);
+        public int CreatePolicy(int UserID, string PolicyNumber, string Status) {
+            return base.Channel.CreatePolicy(UserID, PolicyNumber, Status);
         }
         
-        public System.Threading.Tasks.Task<int> CreatePolicyAsync(int UserID, string PolicyNumber, string Item_ID, string Make, string Model, string Derivative, int Year, string Image, string Status) {
-            return base.Channel.CreatePolicyAsync(UserID, PolicyNumber, Item_ID, Make, Model, Derivative, Year, Image, Status);
+        public System.Threading.Tasks.Task<int> CreatePolicyAsync(int UserID, string PolicyNumber, string Status) {
+            return base.Channel.CreatePolicyAsync(UserID, PolicyNumber, Status);
+        }
+        
+        public void UpdatePolicy(int id, string PolicyNumber, string Status) {
+            base.Channel.UpdatePolicy(id, PolicyNumber, Status);
+        }
+        
+        public System.Threading.Tasks.Task UpdatePolicyAsync(int id, string PolicyNumber, string Status) {
+            return base.Channel.UpdatePolicyAsync(id, PolicyNumber, Status);
+        }
+        
+        public int CreateVehicle(int UserID, string PolicyNumber, string Item_ID, string Make, string Model, string Derivative, int Year, string Image, string Status) {
+            return base.Channel.CreateVehicle(UserID, PolicyNumber, Item_ID, Make, Model, Derivative, Year, Image, Status);
+        }
+        
+        public System.Threading.Tasks.Task<int> CreateVehicleAsync(int UserID, string PolicyNumber, string Item_ID, string Make, string Model, string Derivative, int Year, string Image, string Status) {
+            return base.Channel.CreateVehicleAsync(UserID, PolicyNumber, Item_ID, Make, Model, Derivative, Year, Image, Status);
+        }
+        
+        public System.Data.DataTable GetVehicleDetails(string PolicyNumber) {
+            return base.Channel.GetVehicleDetails(PolicyNumber);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> GetVehicleDetailsAsync(string PolicyNumber) {
+            return base.Channel.GetVehicleDetailsAsync(PolicyNumber);
         }
         
         public System.Data.DataTable GetUserPolicies(int UserID) {

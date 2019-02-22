@@ -37,6 +37,24 @@
   <wsdl:message name="ILookForCarsService_CreatePolicy_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreatePolicyResponse" />
   </wsdl:message>
+  <wsdl:message name="ILookForCarsService_UpdatePolicy_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePolicy" />
+  </wsdl:message>
+  <wsdl:message name="ILookForCarsService_UpdatePolicy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePolicyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILookForCarsService_CreateVehicle_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateVehicle" />
+  </wsdl:message>
+  <wsdl:message name="ILookForCarsService_CreateVehicle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateVehicleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILookForCarsService_GetVehicleDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVehicleDetails" />
+  </wsdl:message>
+  <wsdl:message name="ILookForCarsService_GetVehicleDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVehicleDetailsResponse" />
+  </wsdl:message>
   <wsdl:message name="ILookForCarsService_GetUserPolicies_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUserPolicies" />
   </wsdl:message>
@@ -69,6 +87,18 @@
     <wsdl:operation name="CreatePolicy">
       <wsdl:input wsaw:Action="http://tempuri.org/ILookForCarsService/CreatePolicy" message="tns:ILookForCarsService_CreatePolicy_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILookForCarsService/CreatePolicyResponse" message="tns:ILookForCarsService_CreatePolicy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePolicy">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILookForCarsService/UpdatePolicy" message="tns:ILookForCarsService_UpdatePolicy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILookForCarsService/UpdatePolicyResponse" message="tns:ILookForCarsService_UpdatePolicy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateVehicle">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILookForCarsService/CreateVehicle" message="tns:ILookForCarsService_CreateVehicle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILookForCarsService/CreateVehicleResponse" message="tns:ILookForCarsService_CreateVehicle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILookForCarsService/GetVehicleDetails" message="tns:ILookForCarsService_GetVehicleDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILookForCarsService/GetVehicleDetailsResponse" message="tns:ILookForCarsService_GetVehicleDetails_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetUserPolicies">
       <wsdl:input wsaw:Action="http://tempuri.org/ILookForCarsService/GetUserPolicies" message="tns:ILookForCarsService_GetUserPolicies_InputMessage" />
@@ -119,6 +149,33 @@
     </wsdl:operation>
     <wsdl:operation name="CreatePolicy">
       <soap:operation soapAction="http://tempuri.org/ILookForCarsService/CreatePolicy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePolicy">
+      <soap:operation soapAction="http://tempuri.org/ILookForCarsService/UpdatePolicy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateVehicle">
+      <soap:operation soapAction="http://tempuri.org/ILookForCarsService/CreateVehicle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleDetails">
+      <soap:operation soapAction="http://tempuri.org/ILookForCarsService/GetVehicleDetails" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

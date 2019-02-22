@@ -21430,6 +21430,10 @@ section.content {
 	color: #d20c03
 }
 
+.card .header h2 strong {
+    color: #d20c03
+}
+
 .theme-blush .input-group .input-group-append .btn-outline-secondary,
 .theme-blush .input-group .input-group-prepend .btn-outline-secondary {
 	border-color: #d20c03;
@@ -21991,4 +21995,12 @@ section.content {
 
 .theme-dark .c3-legend-item text {
 	fill: #8c8c8c
+}
+
+.white{
+    color: #fff !important
+}
+
+.capitalize{
+    text-transform:capitalize;
 }

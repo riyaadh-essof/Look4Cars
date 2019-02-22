@@ -265,13 +265,22 @@ namespace LookForCars {
         protected global::System.Web.UI.HtmlControls.HtmlInputText AddLine2;
         
         /// <summary>
-        /// CitySub control.
+        /// Suburb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText CitySub;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Suburb;
+        
+        /// <summary>
+        /// City control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText City;
         
         /// <summary>
         /// postalCode control.
@@ -400,13 +409,22 @@ namespace LookForCars {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtNextMobile;
         
         /// <summary>
-        /// relationRela control.
+        /// txtKinRelation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect relationRela;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect txtKinRelation;
+        
+        /// <summary>
+        /// password1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword password1;
         
         /// <summary>
         /// SubmitForm control.

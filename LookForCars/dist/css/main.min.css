@@ -21,7 +21,7 @@ body {
     margin: 0px;
     padding: 0px;
     color: #838383;
-    font-family: "Open Sans", sans-serif;
+    font-family: 'kiamedium', sans-serif;
     font-size: 0.875rem;
     word-wrap: break-word;
     line-height: 1.5rem;
@@ -30,7 +30,7 @@ body {
 a {
   text-decoration: none;
   color: inherit;
-  transition: all 0.3s; }
+  transition: all 0.3s; }#
   a:hover, a:focus {
     text-decoration: none;
     outline: none; }
@@ -39,11 +39,12 @@ a {
 
 /*======================== Font Style Css ===============================*/
 h1, h2, h3, h4, h5, h6 {
-  color: #000000;
-  margin: 0 0 18px;
-  line-height: 1;
-  font-weight: 500;
-  font-family: "Montserrat", sans-serif; }
+    color: #000000;
+    margin: 0 0 18px;
+    line-height: 1;
+    font-weight: 500;
+    font-family: 'kiamedium', sans-serif;
+}
 
 .lead {
   font-size: 1.125rem; }
@@ -1118,3 +1119,26 @@ section {
     width: 130px; }
   .service-list .list-one, .service-list .list-two, .service-list .list-three {
     padding: 0px; } }
+
+/**FONTS*/
+@font-face {
+    font-family: 'kialight';
+    src: url('../fonts/kia_light-webfont-webfont.woff2') format('woff2'), url('../fonts/kia_light-webfont-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'kiabold';
+    src: url('../fonts/kia_bold-webfont-webfont.woff2') format('woff2'), url('../fonts/kia_bold-webfont-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'kiamedium';
+    src: url('../fonts/kia_medium-webfont-webfont.woff2') format('woff2'), url('../fonts/kia_medium-webfont-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+

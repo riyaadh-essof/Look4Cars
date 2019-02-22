@@ -20,25 +20,16 @@ namespace LookForCars
 
             int id = 0;
             string profileImage = "";
-
-
-            if (l.UserAuth(txtUsername.Value, txtPassword.Value, ref id, ref profileImage))
+            string firstname = "";
+            string lastname = "";         
+            if (l.UserAuth(txtUsername.Value, txtPassword.Value, ref id, ref profileImage, ref firstname, ref lastname))
             {
                 Session["LoggedIn"] = txtUsername.Value;
+                Session["FirstName"] = firstname;
+                Session["LastName"] = lastname;
                 Session["ID"] = id;
                 Session["Propic"] = profileImage;
-
-                string vehicleID = "";
-                if (!(Session["VehicleID"] == null))
-                {
-                    vehicleID = Session["VehicleID"].ToString();
-                    Response.Redirect("MyFinance/createpolicy.aspx?req=" + vehicleID);
-                }
-                else
-                {
-                    Response.Redirect("MyFinance/dashboard.aspx");
-                }
-
+                Response.Redirect("MyFinance/dashboard.aspx");
             }
             else
             {

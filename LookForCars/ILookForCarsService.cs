@@ -16,16 +16,25 @@ namespace LookForCars
         bool checkUser(string email);
 
         [OperationContract]
-        bool UserAuth(string username, string password, ref int id, ref string propic);
+        bool UserAuth(string username, string password, ref int id, ref string propic, ref string firstname, ref string lastname);
 
         [OperationContract]
         int CreateUserAddress(int User_ID, string Line1, string Line2, string Suburb, string City, string Province, int PostalCode, string Type);
 
         [OperationContract]
-        int CreateUser(int FirstName, string LastName, string IDType, string IDNumber, string Email, string Cell, int Tel, string password);
+        int CreateUser(string FirstName, string LastName, string IDType, string IDNumber, string Email, string Cell, string Tel, string Password);
 
         [OperationContract]
-        int CreatePolicy(int UserID, string PolicyNumber, string Item_ID, string Make, string Model, string Derivative, int Year, string Image, string Status);
+        int CreatePolicy(int UserID, string PolicyNumber, string Status);
+
+        [OperationContract]
+        void UpdatePolicy(int id, string PolicyNumber, string Status);
+
+        [OperationContract]
+        int CreateVehicle(int UserID, string PolicyNumber, string Item_ID, string Make, string Model, string Derivative, int Year, string Image, string Status);
+
+        [OperationContract]
+        DataTable GetVehicleDetails(string PolicyNumber);
 
         [OperationContract]
         DataTable GetUserPolicies(int UserID);

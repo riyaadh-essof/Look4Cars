@@ -35,7 +35,7 @@ namespace LookForCars
             }
         }
 
-        public bool UserAuth(string username, string password, ref int id, ref string propic)
+        public bool UserAuth(string username, string password, ref int id, ref string propic, ref string firstname, ref string lastname)
         {
             MySqlCommand commandAdmin = new MySqlCommand("Select * From L4C_Users Where Email=@username AND Password=@pass AND Status=@status", connection);
             commandAdmin.Connection.Open();
@@ -50,6 +50,8 @@ namespace LookForCars
                 username = reader["Email"].ToString();
                 id = int.Parse(reader["ID"].ToString());
                 propic = reader["ProfileImage"].ToString();
+                firstname = reader["FirstName"].ToString();
+                lastname = reader["LastName"].ToString();
                 reader.Dispose();
                 commandAdmin.Connection.Close();
                 return true;
@@ -83,13 +85,12 @@ namespace LookForCars
             return id;
         }
 
-        public int CreateUser(int FirstName, string LastName, string IDType, string IDNumber, string Email, string Cell, int Tel, string Password)
+        public int CreateUser(string FirstName, string LastName, string IDType, string IDNumber, string Email, string Cell, string Tel, string Password)
         {
             MySqlCommand command = new MySqlCommand("INSERT INTO `L4C_Users`(`FirstName`, `LastName`, `IDType`, `IDNumber`, `Email`, `Cell`, `Tel`, `Password`) VALUES (@FirstName, @LastName, @IDType, @IDNumber, @Email, @Cell, @Tel, @Password); Select LAST_INSERT_ID()", connection);
             command.Connection.Open();
             command.Parameters.AddWithValue("@FirstName", FirstName);
-            command.Parameters.AddWithValue("@UserName", LastName);
-            command.Parameters.AddWithValue("@UserSurname", IDType);
+            command.Parameters.AddWithValue("@LastName", LastName);
             command.Parameters.AddWithValue("@IDType", IDType);
             command.Parameters.AddWithValue("@IDNumber", IDNumber);
             command.Parameters.AddWithValue("@Email", Email);
@@ -103,9 +104,36 @@ namespace LookForCars
             return id;
         }
 
-        public int CreatePolicy(int UserID, string PolicyNumber, string Item_ID, string Make, string Model, string Derivative, int Year, string Image, string Status)
+        public int CreatePolicy(int UserID, string PolicyNumber, string Status)
         {
-            MySqlCommand command = new MySqlCommand("INSERT INTO `L4C_Policies`(`UserID`, `PolicyNumber`, `Item_ID`, `Make`, `Model`, `Derivative`, `Year`, `Image`, `Status`) VALUES (@UserID, @PolicyNumber, @Item_ID, @Make, @Model, @Derivative, @Year, @Image, @Status); Select LAST_INSERT_ID()", connection);
+            MySqlCommand command = new MySqlCommand("INSERT INTO `L4C_Policies`(`UserID`, `PolicyNumber`, `Status`) VALUES (@UserID, @PolicyNumber, @Status); Select LAST_INSERT_ID()", connection);
+            command.Connection.Open();
+            command.Parameters.AddWithValue("@UserID", UserID);
+            command.Parameters.AddWithValue("@PolicyNumber", PolicyNumber);
+            command.Parameters.AddWithValue("@Status", Status);
+
+            int id = Convert.ToInt32(command.ExecuteScalar());
+            command.Connection.Close();
+            command.Dispose();
+            return id;
+        }
+
+        public void UpdatePolicy(int id, string PolicyNumber, string Status)
+        {
+            MySqlCommand command = new MySqlCommand("UPDATE `L4C_Policies` SET PolicyNumber=@PolicyNumber, Status=@Status WHERE ID=@ID", connection);
+            command.Connection.Open();
+            command.Parameters.AddWithValue("@ID", id);
+            command.Parameters.AddWithValue("@PolicyNumber", PolicyNumber);
+            command.Parameters.AddWithValue("@Status", Status);
+            command.ExecuteNonQuery();
+            command.Connection.Close();
+            command.Dispose();
+        }
+
+
+        public int CreateVehicle(int UserID, string PolicyNumber, string Item_ID, string Make, string Model, string Derivative, int Year, string Image, string Status)
+        {
+            MySqlCommand command = new MySqlCommand("INSERT INTO `L4C_Vehicles`(`UserID`, `PolicyNumber`, `VehicleID`, `Make`, `Model`, `Derivative`, `Year`, `Image`, `Status`) VALUES (@UserID, @PolicyNumber, @Item_ID, @Make, @Model, @Derivative, @Year, @Image, @Status); Select LAST_INSERT_ID()", connection);
             command.Connection.Open();
             command.Parameters.AddWithValue("@UserID", UserID);
             command.Parameters.AddWithValue("@PolicyNumber", PolicyNumber);
@@ -122,7 +150,6 @@ namespace LookForCars
             command.Dispose();
             return id;
         }
-
         public DataTable GetUserPolicies(int UserID)
         {
             MySqlCommand command = new MySqlCommand("Select * From L4C_Policies Where UserID=@ID", connection);
@@ -146,6 +173,20 @@ namespace LookForCars
             command.Parameters.AddWithValue("@Status", status);
             DataTable dt = new DataTable();
             dt.TableName = "Policies";
+            adapter.Fill(dt);
+            command.Connection.Close();
+            command.Dispose();
+            return dt;
+        }
+
+        public DataTable GetVehicleDetails(string PolicyNumber)
+        {
+            MySqlCommand command = new MySqlCommand("Select * From L4C_Vehicles Where PolicyNumber=@PolicyNumber", connection);
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+            command.Connection.Open();
+            command.Parameters.AddWithValue("@PolicyNumber", PolicyNumber);
+            DataTable dt = new DataTable();
+            dt.TableName = "Vehicle Details";
             adapter.Fill(dt);
             command.Connection.Close();
             command.Dispose();

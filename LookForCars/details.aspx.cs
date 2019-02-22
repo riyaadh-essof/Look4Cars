@@ -18,6 +18,14 @@ namespace LookForCars
     public partial class details : System.Web.UI.Page
     {
         string id = "";
+        string make = "";
+        string model = "";
+        string derivative = "";
+        string img = "";
+        string year = "";
+        string MMCODE = "";
+        string price = "";
+
         string title = "Greetings";
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -59,6 +67,7 @@ namespace LookForCars
                             foreach (var item in BMW)
                             {
                                 String str = item.Element("Price").Value;
+                                price = item.Element("Price").Value;
                                 int index = str.IndexOf('.');
                                 if (index > 0)
                                 {
@@ -93,7 +102,9 @@ namespace LookForCars
                                 double max = str2*0.8;
                                 sliderdeposit.Attributes["data-slider-max"] = max.ToString();
                                 var str3 = str2.ToString("N", new CultureInfo("en-US"));
-                                txtInstallment.InnerHtml += "From R"+ install +"pm with no deposit and no balloon";
+                                txtInstallment.InnerHtml += "R"+ install +"pm";
+                                Finance2.InnerHtml += " R"+ install +"pm";
+                                txtInitital.Value = install.ToString();
                                 demo.InnerHtml = "R" + install + "pm";
                                 txtBodyType.InnerHtml = item.Element("BodyType").Value;
                                 txtColour.InnerHtml = item.Element("Colour").Value;
@@ -112,7 +123,14 @@ namespace LookForCars
                                 txtFuelType.InnerHtml = item.Element("FuelType").Value;
                                 //txtMake.InnerHtml = item.Element("Make").Value;
                                 txtMileage.InnerHtml = item.Element("Mileage").Value + "km";
-                               //txtModel2.InnerHtml = item.Element("Model").Value;
+                                //txtModel2.InnerHtml = item.Element("Model").Value;
+
+                                make = item.Element("Make").Value;
+                                model = item.Element("Model").Value;
+                                year = item.Element("Year").Value;
+                                derivative = item.Element("Derivative").Value;
+
+                                
                                 txtTitle.InnerHtml = item.Element("Year").Value + " " + item.Element("Make").Value + " "
                                     + item.Element("Model").Value + " " + item.Element("Derivative").Value + " ";
                                 //txtTitle2.InnerHtml = item.Element("Year").Value + " " + item.Element("Make").Value + " "
@@ -127,13 +145,22 @@ namespace LookForCars
                                 }
 
                                 txtYear.InnerHtml = item.Element("Year").Value;
-                                txtPrice.InnerHtml = "R" + str3;
+                                txtPrice.InnerHtml = "Retail Price: R" + str3;
                                 string number = item.Element("Price").Value.Split('.')[0].Trim();
                                 txtPrice2.Value = number;
                                 txtPriceHidden.Value = number;
                                 var monthly = install2;// Double.Parse(item.Element("Price").Value) / 60;
                                 //monthlyPrice.InnerHtml = "<span style='font-size:16px;'> From</span> R" + monthly.ToString() + "<sup style='font-size:16px;'> Per Month</sup>";
                                 var picElements = item.XPathSelectElements("Media/Pic");
+                                var image = picElements.FirstOrDefault();
+                                if (image == null)
+                                {
+                                    image = new XElement("Image");
+                                    image.SetValue("noimage.jpg");
+                                    
+                                }
+                                img = image.Value.ToString();
+                                System.Diagnostics.Debug.WriteLine(img);
                                 foreach (var picElement in picElements)
                                 {
                                     divImages.InnerHtml += "<li class='position-relative'  data-thumb='" + picElement.Value + "'><img src='" + picElement.Value+"' alt='Vehicle Image' width='100%' class='img-fluid' />";
@@ -156,7 +183,8 @@ namespace LookForCars
                                 {
                                     txtFeatures.InnerHtml += "<li><i class='fa fa-check c-primary pr-2'></i>"+f+"</li>";
                                 }
-                                    // financeAnchor.Attributes["Href"] = "https://torque.seritisolutions.co.za/app/financeapplication?CompanyCode=FTHFA&UniqueCode=B8479481-4EE7-4E93-B375-486228940F52&MMCode=" + item.Element("MMCode").Value;
+                                MMCODE = item.Element("MMCode").Value;
+                                // financeAnchor.Attributes["Href"] = "https://torque.seritisolutions.co.za/app/financeapplication?CompanyCode=FTHFA&UniqueCode=B8479481-4EE7-4E93-B375-486228940F52&MMCode=" + item.Element("MMCode").Value;
                                 //A1.Attributes["Href"] = "https://torque.seritisolutions.co.za/app/financeapplication?CompanyCode=FTHFA&UniqueCode=B8479481-4EE7-4E93-B375-486228940F52&MMCode=" + item.Element("MMCode").Value;
                                 //testDriveAnchor.HRef = "booktestdrive.aspx?id=" + id + "&Make=" + item.Element("Make").Value + "&Model=" + item.Element("Model").Value + "&Year=" + item.Element("Year").Value + "";
                                 title = item.Element("Year").Value + " " + item.Element("Make").Value + " "
@@ -213,7 +241,33 @@ namespace LookForCars
 
         protected void btnFinance_ServerClick(object sender, EventArgs e)
         {
-            Session["VehicleID"] = Request.QueryString["id"].ToString();
+            Session["VehicleID"] = id;
+            Session["Make"] = make;
+            Session["Model"] = model;
+            Session["Derivative"] = derivative;
+            Session["Year"] = year;
+            Session["Image"] = img;
+            Session["MMCode"] = MMCODE;
+            Session["Price"] = price;
+            seriti.Product Product = new seriti.Product() {
+                CashInd = "0",
+                Price = "600.00",
+                ProductOptionId = "1",
+                CostGroup = "1",
+                ReferenceNumber="TEST1"
+            };
+            seriti.Product Product2 = new seriti.Product()
+            {
+                CashInd = "0",
+                Price = "800.00",
+                ProductOptionId = "2",
+                CostGroup = "1",
+                ReferenceNumber = "TEST2"
+            };
+            seriti.Product[] Products = new seriti.Product[2];
+            Products[0] = Product;
+            Products[1] = Product2;
+            Session["Products"] = Products;
             if (Session["LoggedIn"] == null)
             {
                 Response.Redirect("MyFinance/login.aspx");

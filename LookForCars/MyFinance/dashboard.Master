@@ -90,10 +90,10 @@
                         <li>
                             <div class="user-info">
                                 <a class="image" href="profile.html">
-                                    <img src="assets/images/profile_av.jpg" alt="User"></a>
+                                    <img src="assets/images/profile_av.jpg" alt="User" id="userImage" runat="server"></a>
                                 <div class="detail">
-                                    <h4>Michael</h4>
-                                    <small>Super Admin</small>
+                                    <h4 id="txtLastName" runat="server">Michael</h4>
+                                    <small id="txtFirstName" runat="server">Super Admin</small>
                                 </div>
                             </div>
                         </li>
@@ -101,7 +101,7 @@
                         <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-hc-fw"></i><span>Profile</span></a>
                             <ul class="ml-menu">
                                 <li><a href="personal.aspx">Personal Information</a></li>
-                                <li><a href="work.aspx">Work and Salary</a></li>
+                                <li><a href="work.aspx">Occupation and Salary</a></li>
                                 <li><a href="financial.aspx">Financial</a></li>
                             </ul>
                         </li>

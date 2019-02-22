@@ -11,60 +11,65 @@ namespace LookForCars.MyFinance
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            string vehicleID = Request.QueryString["req"].ToString();
             seriti.PolicyServicesV300SoapClient s = new seriti.PolicyServicesV300SoapClient();
-
+            //string vehicleID = Request.QueryString["req"].ToString();
             seriti.Credentials cred = new seriti.Credentials
             {
-                CompanyCode = "FTHFA",
-                CompanyPassword = "B8479481-4EE7-4E93-B375-486228940F52"
+                CompanyCode = "FTSC",
+                CompanyPassword = "FTSC@76$1"
             };
-
+            seriti.PhysicalAddress Address = new seriti.PhysicalAddress
+            {
+                Address1 = "44 Garrick Avenue",
+                Address2 = "Extension 8",
+                Suburb = "Lenasia",
+                City = "Johannesburg",
+                Country = "South Africa",
+                PostCode = "1827",
+                Province = "Gauteng"
+            };
             seriti.Person Person = new seriti.Person
             {
-                AdminOrderInd = "0",
-                SequestrianOrderInd = "0",
-                DebtReviewInd = "0",
-                GuarantorInd = "0",
-                SuretyInd = "0",
-                CoDebtorInd = "0",
-                LastName = ""
+                //AdminOrderInd = "0",
+                //SequestrianOrderInd = "0",
+                //DebtReviewInd = "0",
+                //GuarantorInd = "0",
+                //SuretyInd = "0",
+                //CoDebtorInd = "0",
+                LastName = "Bracke",
+                //IDNumber = "9507165121083",
+                //IDType = "RSA ID",
+                //PhysicalAddress = Address
+
             };
 
             seriti.BankAccount BankAccount = new seriti.BankAccount
             {
-                AccountHolderName = "",
-                AccountType = "",
-                AccountNumber = ""
+
+
             };
 
 
 
             seriti.Policy Policy = new seriti.Policy
             {
-                SalesReferenceNumber = "",
-                BranchCode = "",
-                VehicleCode = "64020101",
-                Manufacturer = "VOLKSWAGEN",
-                Model = "POLO VIVO GP",
-                ManufacturerDerivativeCode = "",
-                Client = Person,
+                SalesReferenceNumber = "FinalTest",
+                BranchCode = "FTTG001",
+
+                Client = Person
+
+
 
             };
 
             seriti.Accessory Accessory = new seriti.Accessory
             {
-                Category = "",
-                CashInd = "0",
-                Price = "0"
+
             };
 
 
             seriti.Product Product = new seriti.Product
             {
-                ProductOptionId = "0",
-                Price = "0"
 
             };
 
@@ -72,7 +77,7 @@ namespace LookForCars.MyFinance
 
             seriti.QuoteProduct QuoteProduct = new seriti.QuoteProduct
             {
-                ProductId = "0"
+
             };
 
             seriti.QuoteProduct[] QuoteprodArr = new seriti.QuoteProduct[1];
@@ -85,16 +90,21 @@ namespace LookForCars.MyFinance
             prodArr[0] = Product;
 
 
-            seriti.CreatePolicyResult response = s.CreatePolicy(cred, Policy, accessArr, prodArr, QuoteprodArr);
-            System.Diagnostics.Debug.WriteLine(response.response.Message.ToString());
+            seriti.CreatePolicyResult response = s.CreatePolicy(cred, Policy, null, null, null);
+
+            for (int i = 0; i < response.response.Errors.Length; i++)
+            {
+                System.Diagnostics.Debug.WriteLine("Field Cat: " + response.response.Errors[i].FieldCategory);
+                System.Diagnostics.Debug.WriteLine("Field Name: " + response.response.Errors[i].FieldName);
+                System.Diagnostics.Debug.WriteLine("Description: " + response.response.Errors[i].Description);
+            }
+
             System.Diagnostics.Debug.WriteLine(response.response.StatusCode.ToString());
-
-
             //System.Diagnostics.Debug.WriteLine(response.PolicyStatusCode.ToString());
-
-            //System.Diagnostics.Debug.WriteLine(response.PolicyNumber.ToString());
-
-            //System.Diagnostics.Debug.WriteLine(response.QuoteProductStatusCode.ToString());
+            if(response.PolicyStatusCode.ToString()=="200" || response.PolicyStatusCode.ToString() == "100"){
+                System.Diagnostics.Debug.WriteLine(response.PolicyNumber.ToString());
+            }
+            
         }
     }
 }

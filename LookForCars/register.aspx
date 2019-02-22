@@ -62,9 +62,10 @@
                         <img src="dist/images/logo.png" alt="" width="200" />
                     </h2>
                     <p>
-                        Usu habeo equidem sanctus no. Suas summo id sed, erat erant oporteat cu pri. In eum omnes molestie. Sed ad debet scaevola, ne mel lorem legendos.
+                        We require a few details in order to create your finance application in our system. Kindly fill out the form as correctly as possible.
                     </p>
                 </div>
+               
                 <div class="col-lg-12 content-right" id="start">
                     <div id="wizard_container">
                         <div id="top-wizard">
@@ -72,7 +73,7 @@
                         </div>
                         <!-- /top-wizard -->
                         <div id="wrapped" method="POST">
-                            <input id="website" name="website" type="text" value="">
+                            <input id="website" name="website" type="text" value=""/>
                             <!-- Leave for security protection, read docs for details -->
                             <div id="middle-wizard">
                                 <div class="step">
@@ -178,10 +179,9 @@
                                                 <label>Car Type</label>
                                                 <div class="styled-select clearfix">
                                                     <select class="wide required" id="newUsedselection" runat="server" name="newused" onchange="getVals(this, 'newused');">
-                                                        <option value="">New / Used / Demo</option>
-                                                        <option value="New">New</option>
                                                         <option value="Used">Used</option>
                                                         <option value="Demo">Demo</option>
+                                                        <option value="New">New</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -207,25 +207,17 @@
                                                 <label>Payment Day</label>
                                                 <div class="styled-select clearfix">
                                                     <select class="wide required" id="paymentDaySelect" runat="server" name="payment_day" onchange="getVals(this, 'payment_day');">
-                                                        <option value="">Payment Day</option>
+                                                        <option value="30">30</option>
                                                         <option value="1">1</option>
                                                         <option value="15">15</option>
                                                         <option value="20">20</option>
                                                         <option value="25">25</option>
                                                         <option value="27">27</option>
-                                                        <option value="30">30</option>
+                                                      
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label>Password</label>
-                                                <input class="form-control required" type="password" id="password1" name="password1" placeholder="Password" onchange="getVals(this, 'password');" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Confirm Password</label>
-                                                <input class="form-control required" type="password" id="password2" name="password2" placeholder="Confirm Password" />
-                                            </div>
-                                            <div id="pass-info" class="clearfix"></div>
+                                          
                                         </div>
                                     </div>
                                 </div>
@@ -240,13 +232,12 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Alternate Mobile Number</label>
-                                                <input type="text" name="alt_mobile_number" id="AltNum1" runat="server" class="form-control required" placeholder="Enter Your Alternate Mobile Number" onchange="getVals(this, 'alt_mobile_number');" />
+                                                <input type="text" name="alt_mobile_number" id="AltNum1" runat="server" class="form-control" placeholder="Enter Your Alternate Mobile Number" onchange="getVals(this, 'alt_mobile_number');" />
                                             </div>
                                             <div class="form-group">
                                                 <label>Contract Type</label>
                                                 <div class="styled-select clearfix">
-                                                    <select class="wide required" name="contract_type" id="ContractTypeSelect" runat="server" onchange="getVals(this, 'contract_type');">
-                                                        <option value="">Contract Type</option>
+                                                    <select class="wide" name="contract_type" id="ContractTypeSelect" runat="server" onchange="getVals(this, 'contract_type');">
                                                         <option value="CONTRACT">CONTRACT</option>
                                                         <option value="PERMANENT">PREPAID</option>
                                                     </select>
@@ -284,8 +275,12 @@
                                                 <input type="text" name="address_line_2" id="AddLine2" runat="server" class="form-control required" placeholder="Enter Your Address" onchange="getVals(this, 'address_line_2');" />
                                             </div>
                                             <div class="form-group">
-                                                <label>Suburb / City</label>
-                                                <input type="text" name="city_suburb" id="CitySub" runat="server" class="form-control required" placeholder="Enter Your City / Suburb" onchange="getVals(this, 'city_suburb');" />
+                                                <label>Suburb</label>
+                                                <input type="text" name="suburb" id="Suburb" runat="server" class="form-control required" placeholder="Enter Your Suburb" onchange="getVals(this, 'suburb');" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>City</label>
+                                                <input type="text" name="city" id="City" runat="server" class="form-control required" placeholder="Enter Your City" onchange="getVals(this, 'city');" />
                                             </div>
                                             <div class="form-group">
                                                 <label>Postal Code</label>
@@ -295,7 +290,7 @@
                                                 <label>Province</label>
                                                 <div class="styled-select clearfix">
                                                     <select class="wide required" id="provinceSelect" runat="server" name="province" onchange="getVals(this, 'province');">
-                                                        <option value="">Enter Your Province</option>
+                                                      
                                                         <option value="GAUTENG">GAUTENG</option>
                                                         <option value="KWAZULU-NATAL">KWAZULU-NATAL</option>
                                                         <option value="WESTERN CAPE">WESTERN CAPE</option>
@@ -318,7 +313,6 @@
                                                 <label>Residential Status</label>
                                                 <div class="styled-select clearfix">
                                                     <select class="wide required" id="ResStatus" runat="server" name="contract_type" onchange="getVals(this, 'contract_type');">
-                                                        <option value="">Enter Your Residential Status</option>
                                                         <option value="OWNER BONDED">OWNER BONDED</option>
                                                         <option value="OWNER BOND FREE">OWNER BOND FREE</option>
                                                         <option value="TENANT">TENANT</option>
@@ -338,8 +332,7 @@
                                             <div class="form-group">
                                                 <label>Marital Status</label>
                                                 <div class="styled-select clearfix">
-                                                    <select id="selMaritalStatus" runat="server" class="wide required" name="marital_status" onchange="getVals(this, 'marital_status');">
-                                                        <option value="">Marital Status</option>
+                                                    <select id="selMaritalStatus" runat="server" class="wide" name="marital_status" onchange="getVals(this, 'marital_status');">
                                                         <option value="SINGLE">SINGLE</option>
                                                         <option value="MARRIED">MARRIED</option>
                                                         <option value="DIVORCED">DIVORCED</option>
@@ -350,10 +343,9 @@
                                             <div class="form-group">
                                                 <label>Marital Type</label>
                                                 <div class="styled-select clearfix">
-                                                    <select id="selMaritalType" runat="server" class="wide required" name="marital_type" onchange="getVals(this, 'marital_type');">
-                                                        <option value="">Marital Type</option>
-                                                        <option value="ANC WITH ACCURAL">ANC WITH ACCURAL</option>
-                                                        <option value="ANC WITHOUT ACCURAL">ANC WITHOUT ACCURAL</option>
+                                                    <select id="selMaritalType" runat="server" class="wide" name="marital_type" onchange="getVals(this, 'marital_type');">
+                                                        <option value="ANC WITH ACCRUAL">ANC WITH ACCRUAL</option>
+                                                        <option value="ANC WITH ACCRUAL">ANC WITH ACCRUAL</option>
                                                         <option value="IN COMMUNITY OF PROPERTY">IN COMMUNITY OF PROPERTY</option>
                                                         <option value="TRIBAL LAW">IN COMMUNITY OF PROPERTY</option>
                                                         <option value="FOREIGN LAW">FOREIGN LAW</option>
@@ -375,8 +367,8 @@
                                             <div class="form-group">
                                                 <label>ID Type</label>
                                                 <div class="styled-select clearfix">
-                                                    <select id="selIdType" runat="server" class="wide required" name="spouse_id_type" onchange="getVals(this, 'spouse_id_type');">
-                                                        <option value="">ID Type</option>
+                                                    <select id="selIdType" runat="server" class="wide" name="spouse_id_type" onchange="getVals(this, 'spouse_id_type');">
+                                                        <option value="RSA ID">Select ID Type</option>
                                                         <option value="RSA ID">RSA ID</option>
                                                         <option value="Passport">Passport</option>
                                                     </select>
@@ -384,7 +376,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Spouse ID Number</label>
-                                                <input id="txtSpouseIdNumber" runat="server" type="text" name="spouse_id_number" class="form-control required" placeholder="Enter Your Spouse ID Number" onchange="getVals(this, 'spouse_id_number');" />
+                                                <input id="txtSpouseIdNumber" runat="server" type="text" name="spouse_id_number" class="form-control" placeholder="Enter Your Spouse ID Number" onchange="getVals(this, 'spouse_id_number');" />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -403,8 +395,8 @@
                                                   <div class="form-group">
                                                 <label>Relationship Of Next Of Kin</label>
                                                 <div class="styled-select clearfix">
-                                                    <select id="txtKinRelation" class="wide required" name="spouse_id_type" onchange="getVals(this, 'spouse_id_type');">
-                                                        <option value="">Relationship</option>
+                                                    <select id="txtKinRelation" runat="server" class="wide required" name="spouse_id_type" onchange="getVals(this, 'spouse_id_type');">
+                                       
                                                         <option value="PARENT">PARENT</option>
                                                         <option value="SIBLING">SIBLING</option>
                                                         <option value="CHILD">CHILD</option>
@@ -414,15 +406,19 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Address Line 1</label>
-                                                <input id="txtKinAddress1" type="text" name="kin_address_line_1" class="form-control required" placeholder="Enter Your Kins Address" onchange="getVals(this, 'kin_address_line_1');" />
+                                                <input id="txtKinAddress1" type="text" name="kin_address_line_1" class="form-control required" placeholder="Enter Address" onchange="getVals(this, 'kin_address_line_1');" />
                                             </div>
                                             <div class="form-group">
                                                 <label>Address Line 2</label>
-                                                <input id="txtKinAddress2" type="text" name="kin_address_line_2" class="form-control required" placeholder="Enter Your Kins Address" onchange="getVals(this, 'kin_address_line_2');" />
+                                                <input id="txtKinAddress2" type="text" name="kin_address_line_2" class="form-control" placeholder="Enter Address" onchange="getVals(this, 'kin_address_line_2');" />
                                             </div>
                                             <div class="form-group">
                                                 <label>Suburb / City</label>
-                                                <input id="txtKinCity" type="text" name="kin_city_suburb" class="form-control required" placeholder="Enter Your Kins City / Suburb" onchange="getVals(this, 'kin_city_suburb');" />
+                                                <input id="txtKinSuburb" type="text" name="kin_suburb" class="form-control required" placeholder="Enter  Suburb" onchange="getVals(this, 'kin_suburbs');" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>City</label>
+                                                <input id="txtKinCity" type="text" name="kin_city" class="form-control required" placeholder="Enter Your Kins City" onchange="getVals(this, 'kin_city');" />
                                             </div>
                                             <div class="form-group">
                                                 <label>Postal Code</label>
@@ -674,7 +670,7 @@
                                             <div class="form-group">
                                                 <label>Level</label>
                                                 <div class="styled-select clearfix">
-                                                    <select id="selLevel" class="wide required" name="level" onchange="getVals(this, 'level');">
+                                                    <select id="selLevel" class="wide" name="level" onchange="getVals(this, 'level');">
                                                         <option label="SENIOR MANAGEMENT" value="string:SENIOR MANAGEMENT">SENIOR MANAGEMENT</option>
                                                         <option label="MANAGEMENT" value="string:MANAGEMENT">MANAGEMENT</option>
                                                         <option label="SUPERVISOR" value="string:SUPERVISOR">SUPERVISOR</option>
@@ -701,7 +697,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Address Line 2</label>
-                                                <input id="txtEmployeeAddress2" type="text" name="employee_address_line_2" class="form-control required" placeholder="Enter Your Employees Address" onchange="getVals(this, 'employee_address_line_2');" />
+                                                <input id="txtEmployeeAddress2" type="text" name="employee_address_line_2" class="form-control" placeholder="Enter Your Employees Address" onchange="getVals(this, 'employee_address_line_2');" />
                                             </div>
                                             <div class="form-group">
                                                 <label>Suburb / City</label>
@@ -715,7 +711,6 @@
                                                 <label>Province</label>
                                                 <div class="styled-select clearfix">
                                                     <select id="selEmployeeProvince" class="wide required" name="employee_province" onchange="getVals(this, 'employee_province');">
-                                                        <option value="">Enter Your Province</option>
                                                         <option value="GAUTENG">GAUTENG</option>
                                                         <option value="KWAZULU-NATAL">KWAZULU-NATAL</option>
                                                         <option value="WESTERN CAPE">WESTERN CAPE</option>
@@ -787,36 +782,17 @@
                                 </div>
                                 <!-- /step-->
                                 <div class="submit step">
-                                    <h3 class="main_question"><strong>3/3</strong>Summary</h3>
+                                    <h3 class="main_question"><strong>6/6</strong>Finish</h3>
                                     <div class="summary">
-                                        <ul>
-                                            <li><strong>1</strong>
-                                                <h5>Personal Details</h5>
-                                                <ul>
-                                                    <li>
-                                                        <label>First Name</label>: <span id="first_name"></span></li>
-                                                    <li>
-                                                        <label>Last Name</label>: <span id="last_name"></span></li>
-                                                    <li>
-                                                        <label>Email</label>: <span id="email"></span></li>
-                                                    <li>
-                                                        <label>ID Type</label>: <span id="idType"></span></li>
-                                                    <li>
-                                                        <label>ID Number</label>: <span id="id"></span></li>
-                                                    <li>
-                                                        <label>Country</label>: <span id="country"></span></li>
-                                                </ul>
-                                            </li>
-                                            <li><strong>2</strong>
-                                                <h5>Vehicle Details</h5>
-                                                <ul>
-                                                    <li>
-                                                        <label>User Name</label>: <span id="vehicle_make"></span></li>
-                                                    <li>
-                                                        <label>Password</label>: <span id="password"></span></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
+                                         <div class="form-group">
+                                                <label>Password</label>
+                                                <input class="form-control required" type="password" id="password1" runat="server" name="password1" placeholder="Password" onchange="getVals(this, 'password');" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Confirm Password</label>
+                                                <input class="form-control required" type="password" id="password2" name="password2" placeholder="Confirm Password" />
+                                            </div>
+                                            <div id="pass-info" class="clearfix"></div>
                                     </div>
                                 </div>
                                 <!-- /step-->

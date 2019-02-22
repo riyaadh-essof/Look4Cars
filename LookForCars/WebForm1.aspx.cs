@@ -15,10 +15,19 @@ namespace LookForCars
 
             seriti.Credentials cred = new seriti.Credentials
             {
-                CompanyCode = "FTHFA",
-                CompanyPassword = "B8479481-4EE7-4E93-B375-486228940F52"
+                CompanyCode = "FTSC",
+                CompanyPassword = "FTSC@76$1"
             };
-
+            seriti.PhysicalAddress Address = new seriti.PhysicalAddress
+            {
+                Address1 = "44 Garrick Avenue",
+                Address2 = "Extension 8",
+                Suburb = "Lenasia",
+                City = "Johannesburg",
+                Country = "South Africa",
+                PostCode = "1827",
+                Province = "Gauteng"
+            };
             seriti.Person Person = new seriti.Person
             {
                 AdminOrderInd = "0",
@@ -27,50 +36,56 @@ namespace LookForCars
                 GuarantorInd = "0",
                 SuretyInd = "0",
                 CoDebtorInd = "0",
-                LastName = ""
+                LastName = "Chopdat",
+                IDNumber = "9507165121083",
+                IDType = "RSA ID",
+                PhysicalAddress = Address
             };
 
             seriti.BankAccount BankAccount = new seriti.BankAccount
             {
-                AccountHolderName = "",
-                AccountType = "",
-                AccountNumber = ""
+                AccountHolderName = "Zayd",
+                AccountType = "CHEQUE",
+                AccountNumber = "62491165984",
+                PrimaryAccountInd = "1",
+                
             };
 
 
 
             seriti.Policy Policy = new seriti.Policy
             {
-                SalesReferenceNumber = "",
-                BranchCode = "",
+                SalesReferenceNumber = "175-544-5",
+                BranchCode = "FTTG001",
                 VehicleCode = "64020101",
                 Manufacturer = "VOLKSWAGEN",
                 Model = "POLO VIVO GP",
-                ManufacturerDerivativeCode = "",
                 Client = Person,
-
+                FIUserName = "ZaydC",
+               
+                SalesFirstName = "Zayd",
+                SalesLastName="Chopdat",
+                SalesRSAIDNumber = "8809105008086",
+                
+                
             };
 
             seriti.Accessory Accessory = new seriti.Accessory
             {
-                Category = "",
-                CashInd = "0",
-                Price = "0"
+                
             };
 
 
             seriti.Product Product = new seriti.Product
             {
-                ProductOptionId = "0",
-                Price = "0"
-
+               
             };
 
 
 
             seriti.QuoteProduct QuoteProduct = new seriti.QuoteProduct
             {
-                ProductId = "0"
+               
             };
 
             seriti.QuoteProduct[] QuoteprodArr = new seriti.QuoteProduct[1];
@@ -84,6 +99,7 @@ namespace LookForCars
 
 
             seriti.CreatePolicyResult response = s.CreatePolicy(cred, Policy, accessArr, prodArr, QuoteprodArr);
+            
             System.Diagnostics.Debug.WriteLine(response.response.Message.ToString());
             System.Diagnostics.Debug.WriteLine(response.response.StatusCode.ToString());
 
